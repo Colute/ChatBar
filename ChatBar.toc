@@ -1,0 +1,7 @@
+## Interface: 11200
+## Title: ChatBar
+## Notes: ChatBar for Unreal Azeroth
+## Author: Colute
+## Version: 1.0
+
+ChatBar.lua
