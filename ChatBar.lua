@@ -1,6 +1,6 @@
 local frame = CreateFrame("Frame", "MyFrame", UIParent)
 
-frame:SetFrameStrata("HIGH")
+frame:SetFrameStrata("LOW")
 frame:RegisterEvent("PLAYER_LOGIN")
 
 local buttonNames = {
@@ -10,7 +10,7 @@ local buttonNames = {
     {"G", "/guild "},
     {"O", "/o "},
     {"W", "/whisper "},
-    {"Y", "/yell "}
+    {"E", "/emote "}
 }
 
 local buttonColors = {
@@ -62,8 +62,6 @@ frame:SetScript("OnEvent", function()
     DEFAULT_CHAT_FRAME:AddMessage("Фрейм загружен.")
 end)
 
-local buttons = {}
-
 for i, data in ipairs(buttonNames) do
     local name = data[1]
     local command = data[2]
@@ -89,5 +87,4 @@ for i, data in ipairs(buttonNames) do
         ChatFrame_OpenChat(command)
     end)
     
-    buttons[i] = btn
 end
