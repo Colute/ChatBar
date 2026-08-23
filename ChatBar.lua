@@ -14,17 +14,17 @@ local buttonNames = {
 }
 
 local buttonColors = {
-    {1.0, 1.0, 1.0},
-    {1.6, 1.6, 1.95},
-    {1.0, 0.0, 0.0},
-    {0.0, 1.0, 0.0},
-    {0.0, 0.5, 0.0},
-    {0.5, 0.0, 0.5},
-    {1.0, 0.5, 0.0}
+    {0.9, 0.9, 0.9},
+    {0.3, 0.5, 0.9},
+    {0.9, 0.2, 0.2},
+    {0.1, 0.8, 0.2},
+    {0.1, 0.5, 0.2},
+    {0.6, 0.2, 0.8},
+    {0.9, 0.5, 0.1} 
 }
 
-local btnWidth = 24
-local btnHeight = 24
+local btnWidth = 16
+local btnHeight = 16
 local padding = 10
 local spacing = 6
 local dynamicWidth = (#buttonNames * btnWidth) + ((#buttonNames - 1) * spacing) + (padding * 2)
@@ -36,7 +36,7 @@ frame:SetPoint("BOTTOMLEFT", ChatFrame1, "TOPLEFT", 0, 30)
 frame:SetBackdrop({
     bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
     edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-    tile = true, tileSize = 16, edgeSize = 16,
+    tile = true, tileSize = 16, edgeSize = 10,
     insets = { left = 4, right = 4, top = 4, bottom = 4 }
 })
 frame:SetBackdropColor(0.1, 0.1, 0.1, 0.8)
@@ -58,10 +58,6 @@ frame:SetScript("OnMouseUp", function()
     end
 end)
 
-frame:SetScript("OnEvent", function()
-    DEFAULT_CHAT_FRAME:AddMessage("Фрейм загружен.")
-end)
-
 for i, data in ipairs(buttonNames) do
     local name = data[1]
     local command = data[2]
@@ -74,13 +70,13 @@ for i, data in ipairs(buttonNames) do
     
     local icon = btn:CreateTexture(nil, "BACKGROUND")
     icon:SetAllPoints(btn)
-    icon:SetTexture("Interface\\Icons\\INV_Misc_Rune_01")
-    
+    icon:SetTexture("Interface\\AddOns\\ChatBar\\icons\\circle")
     local color = buttonColors[i]
     icon:SetVertexColor(color[1], color[2], color[3])
     
     local text = btn:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    text:SetPoint("BOTTOM", btn, "TOP", 0, 10)
+    text:SetPoint("BOTTOM", icon, "TOP", -1, 4)
+    text:SetJustifyH("CENTER")
     text:SetText(name)
     
     btn:SetScript("OnClick", function()
