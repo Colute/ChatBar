@@ -2,6 +2,6 @@
 ## Title: ChatBar
 ## Notes: ChatBar for Unreal Azeroth
 ## Author: Colute
-## Version: 1.0
+## Version: 1.1
 
 ChatBar.lua
