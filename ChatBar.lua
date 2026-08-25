@@ -2,7 +2,6 @@ local frame = CreateFrame("Frame", "MyFrame", UIParent)
 
 frame:SetFrameStrata("LOW")
 
--- Регистрация ивентов
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:RegisterEvent("CHAT_MSG_CHANNEL_NOTICE")
 frame:RegisterEvent("CHANNEL_UI_UPDATE")
@@ -13,7 +12,6 @@ local btnWidth = 20
 local btnHeight = 20
 local padding = 10
 
--- Инициализация сохраненных переменных
 if not ChatBarDB then
     ChatBarDB = {
         style = "SkinGlass",
@@ -37,10 +35,8 @@ local staticButtons = {
 local activeButtons = {}
 local UpdateChatBar
 
--- Функция для применения сохраненной позиции
 local function RestorePosition()
     frame:ClearAllPoints()
-    -- Если координаты еще не заданы, ставим по умолчанию над чатом
     if not ChatBarDB.x or not ChatBarDB.y then
         ChatBarDB.x = 320
         ChatBarDB.y = 175
@@ -179,7 +175,6 @@ UpdateChatBar = function()
         table.insert(activeButtons, btn)
     end
 
-    -- Обязательно восстанавливаем позицию после перерисовки кнопок
     RestorePosition()
 end
 
@@ -245,7 +240,6 @@ local function DropDown_Initialize()
     UIDropDownMenu_AddButton(info)
 end
 
--- Первичная установка позиции при загрузке скрипта
 RestorePosition()
 
 frame:SetMovable(true)
